@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DungeonMaster.Views.NewPlayerPage"
+             Title="Новый игрок">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Padding="15">
+            <Label Text="Имя персонажа" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="NameEntry" Keyboard="Text"/>
+
+            <Label Text="Имя игрока" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="PlayerEntry" Keyboard="Text"/>
+
+            <Label Text="Класс" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="ClassEntry" Keyboard="Text"/>
+
+            <Button Margin="30, 0, 30, 0" 
+                    Text="Сохранить"
+                    x:Name="SaveButton"
+                    Clicked="OnClick" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

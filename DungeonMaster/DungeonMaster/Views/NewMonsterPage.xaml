@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DungeonMaster.Views.NewMonsterPage"
+             Title="Новый монстр">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Padding="15">
+            <Label Text="Имя монстра" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="NameEntry" Keyboard="Text"/>
+
+            <Label Text="Здоровье" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="HealthEntry" Keyboard="Numeric" />
+
+            <Label Text="Опыт" FontSize="Medium" />
+            <Entry FontSize="Medium" x:Name="XPEntry" Keyboard="Numeric" />
+
+            <Label Text="Описание" FontSize="Medium" />
+            <Editor FontSize="Medium" Margin="0" x:Name="DescriptionEditor" Keyboard="Text"/>
+
+            <Button Margin="30, 0, 30, 0" 
+                    Text="Сохранить"
+                    x:Name="SaveButton"
+                    Clicked="OnClick" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

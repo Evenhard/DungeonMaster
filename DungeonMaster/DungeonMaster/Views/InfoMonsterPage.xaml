@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DungeonMaster.Views.InfoMonsterPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Здоровье:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="{Binding Mob.Health}" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Опыт:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="{Binding Mob.XP}" FontSize="Medium"/>
+            </StackLayout>
+
+            <Label Text="Описание:" FontSize="Medium" FontAttributes="Bold"/>
+            <Label Text="{Binding Mob.Description}" FontSize="Medium" Margin="0, -5, 0, 0"/>
+
+            <Button Margin="30, 0, 30, 0" 
+                    Text="Удалить"
+                    x:Name="DeleteButton"
+                    Clicked="OnClick" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>    
+</ContentPage>

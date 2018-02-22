@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="DungeonMaster.AlertPopup.TextInputView">
+
+    <ContentView.Content>
+        <Frame BackgroundColor="White" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="250">
+            <StackLayout Spacing="5"
+                     Margin="-10">
+
+                <Label x:Name="TitleLabel"
+                   FontSize="Medium"
+                   Text="Заголовок"
+                   TextColor="#B61C1A"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="30, 10"/>
+
+                <Label x:Name="ValidationLabel"
+                   FontSize="Small"
+                   IsVisible="False"
+                   Text="Поле ввода не должно быть пустым или иметь отрицательное значение!"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"
+                   Margin="30, -5, 15, 10"
+                   TextColor="Red" />
+
+                <StackLayout Orientation="Horizontal"
+                         Margin="15, 10">
+
+                    <iconize:IconLabel Text="ion-android-remove-circle" 
+                                   FontSize="30"
+                                   HorizontalOptions="EndAndExpand"
+                                   Margin="10, 0">
+
+                        <iconize:IconLabel.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RemoveTap"
+                                              NumberOfTapsRequired="1" />
+                        </iconize:IconLabel.GestureRecognizers>
+
+                    </iconize:IconLabel>
+
+                    <Entry x:Name="InputEntry"
+                       HorizontalTextAlignment="Center"
+                       Keyboard="Numeric" 
+                       WidthRequest="60"
+                       Margin="5, 0"
+                       HorizontalOptions="Center"/>
+
+                    <iconize:IconLabel Text="ion-android-add-circle" 
+                                   FontSize="30"
+                                   HorizontalOptions="StartAndExpand"
+                                   Margin="10, 0">
+
+                        <iconize:IconLabel.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddTap"
+                                              NumberOfTapsRequired="1" />
+                        </iconize:IconLabel.GestureRecognizers>
+
+                    </iconize:IconLabel>
+
+
+                </StackLayout>
+
+                <Button x:Name="CloseButton" 
+                    BackgroundColor="#B61C1A" 
+                    TextColor="White"
+                    Text="Ок" 
+                    HeightRequest="45"
+                    Margin="70, 10, 70, 5"/>
+
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

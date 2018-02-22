@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:convert="clr-namespace:DungeonMaster.Converters"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="DungeonMaster.Views.BattlePage"
+             Title="{Binding Title}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convert:NegateBooleanConverter x:Key="negateBooleanConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#F3F0E9">
+            <Grid ColumnSpacing="0" 
+                  RowSpacing="0"
+                  Margin="0"
+                  VerticalOptions="Start"
+                  BackgroundColor="White"
+                  HorizontalOptions="FillAndExpand" 
+                  x:Name="DamageGrid">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Frame HorizontalOptions="FillAndExpand"
+                       BackgroundColor="#B61C1A"
+                       CornerRadius="5"
+                       HeightRequest="10"
+                       Margin="5, 5, 1.5, 5"
+                       Grid.Column="0" 
+                       Grid.Row="0" >
+
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="-7, -14">
+
+                        <iconize:IconLabel Text="ion-loop"
+                                           TextColor="White"
+                                           FontSize="24" 
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="CenterAndExpand"
+                                           Margin="0"/>
+
+                        <Label Text="Очистить"
+                               TextColor="White"
+                               FontSize="14" 
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"/>
+
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ClearCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame HorizontalOptions="FillAndExpand"
+                       BackgroundColor="#B61C1A"
+                       CornerRadius="5"
+                       HeightRequest="10"
+                       Margin="1.5, 5, 1.5, 5"
+                       Grid.Column="1" 
+                       Grid.Row="0" >
+
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="-7, -14">
+
+                        <iconize:IconLabel Text="ion-android-add"
+                                           TextColor="White"
+                                           FontSize="24" 
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="CenterAndExpand"
+                                           Margin="0"/>
+
+                        <Label Text="Игрок"
+                               TextColor="White"
+                               FontSize="14" 
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"/>
+
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddPlayerCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame HorizontalOptions="FillAndExpand"
+                       BackgroundColor="#B61C1A"
+                       CornerRadius="5"
+                       HeightRequest="10"
+                       Margin="1.5, 5, 5, 5"
+                       Grid.Column="2" 
+                       Grid.Row="0" >
+
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Margin="-7, -14">
+
+                        <iconize:IconLabel Text="ion-android-add"
+                                           TextColor="White"
+                                           FontSize="24" 
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="CenterAndExpand"
+                                           Margin="0"/>
+
+                        <Label Text="Монстр"
+                               TextColor="White"
+                               FontSize="14" 
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"/>
+
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMonsterCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <ListView x:Name="ItemsListView" 
+                      ItemsSource="{Binding Items}"
+                      VerticalOptions="FillAndExpand"
+                      BackgroundColor="#F3F0E9"
+                      SeparatorVisibility="None"
+                      SeparatorColor="Transparent"
+                      CachingStrategy="RecycleElement"
+                      RowHeight="80" 
+                      HasUnevenRows="False"
+                      ItemSelected="OnItemSelected">
+
+                <ListView.Footer>
+                    <ContentView HeightRequest="2.5" BackgroundColor="#F3F0E9" />
+                </ListView.Footer>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="5, 2.5" BackgroundColor="White">
+
+                                <Grid ColumnSpacing="0" 
+                                      RowSpacing="0" 
+                                      VerticalOptions="FillAndExpand" 
+                                      HorizontalOptions="FillAndExpand" 
+                                      x:Name="Grid">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="60"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--ion-android-radio-button-off
+                                    ion-android-checkbox-outline-blank
+                                    ion-android-favorite-outline
+                                    ion-android-favorite-->
+
+                                    <iconize:IconLabel Text="ion-android-radio-button-off" 
+                                                       FontSize="35" 
+                                                       VerticalTextAlignment="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalOptions="FillAndExpand"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       Margin="0, 3, 0, 5"
+                                                       Grid.Column="0"
+                                                       Grid.RowSpan="2" />
+
+                                    <Label Text="{Binding Initiative}" 
+                                           FontSize="18" 
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           Margin="0, 0, 0, 5"
+                                           Grid.Column="0"
+                                           Grid.RowSpan="2" />
+
+                                    <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           Margin="10, 10, 5, 0"
+                                           HorizontalOptions="FillAndExpand"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           Grid.Column="1" />
+
+                                    <StackLayout Grid.Column="1"
+                                                 Grid.Row="1"
+                                                 Orientation="Horizontal" 
+                                                 HorizontalOptions="StartAndExpand" 
+                                                 VerticalOptions="CenterAndExpand" 
+                                                 Spacing="3"
+                                                 Margin="10, 0">
+
+                                        <Label Text="{Binding Class}" 
+                                               FontSize="13"
+                                               VerticalOptions="CenterAndExpand"
+                                               VerticalTextAlignment="Center"
+                                               IsVisible="{Binding isMonster, Converter={StaticResource negateBooleanConverter}}"/>
+
+                                        <iconize:IconLabel Text="ion-android-star" 
+                                                           FontSize="13"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           VerticalTextAlignment="Center"
+                                                           IsVisible="{Binding isMonster}"/>
+
+                                        <Label Text="{Binding XP}" 
+                                               FontSize="13"
+                                               VerticalOptions="CenterAndExpand"
+                                               VerticalTextAlignment="Center"
+                                               IsVisible="{Binding isMonster}"/>
+                                    </StackLayout>
+
+                                    <iconize:IconLabel Text="ion-android-favorite" 
+                                                       FontSize="50"
+                                                       VerticalTextAlignment="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Margin="0"
+                                                       Grid.Column="2"
+                                                       Grid.RowSpan="2"
+                                                       IsVisible="{Binding isMonster}"/>
+
+                                    <Label Text="{Binding Health}" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="16"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           Margin="0, 0, 0, 3"
+                                           Grid.Column="2"
+                                           Grid.RowSpan="2"
+                                           IsVisible="{Binding isMonster}">
+
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DamageCommand}" 
+                                                                  CommandParameter="{Binding Source={x:Reference Grid}, Path=BindingContext}" 
+                                                                  BindingContext="{Binding Source={x:Reference ItemsListView}, Path=BindingContext}"
+                                                                  NumberOfTapsRequired="1" />
+                                        </Label.GestureRecognizers>
+
+                                    </Label>
+
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
